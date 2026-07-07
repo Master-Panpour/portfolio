@@ -1,0 +1,47 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*.kdbx
+
+# Java build output and runtime logs
+backend/out/
+backend/*.log
+backend/*.err.log
+*.class
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Runtime data that should not be committed
+data/access-log.jsonl
+data/*.bak
+data/*.tmp
+
+# Package manager and tooling caches
+.npm/
+.pnpm-store/
+.yarn/
+coverage/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo

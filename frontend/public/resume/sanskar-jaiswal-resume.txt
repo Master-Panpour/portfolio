@@ -1,0 +1,78 @@
+Sanskar Jaiswal
+B.Tech CSE (Cybersecurity & AI) | Purple Teamer & DFIR
+Uttar Pradesh, India
+Email: sanskarjaiswal43@gmail.com
+Phone: +91-8467970305
+
+Profiles
+LinkedIn: https://www.linkedin.com/in/sanskar-jaiswal-639369329/
+GitHub: https://github.com/Master-Panpour
+TryHackMe: https://tryhackme.com/p/MESSHIN
+
+Summary
+- Dedicated cybersecurity professional and Purple Teamer specializing in penetration testing, malware analysis, and AI-driven security solutions.
+- Combines offensive security expertise with defensive digital forensics experience from law enforcement exposure, Cybersecurity Council work, and ShadowFox security assessment practice.
+- Builds resilient systems using Nmap, OWASP ZAP, Wireshark, Kali Linux, custom Python scripts, threat detection pipelines, and secure full-stack engineering.
+
+Education
+GLA University
+B.Tech in Computer Science Engineering
+Specialization: Cybersecurity and AI
+Location: Mathura
+Period: 08/2024 - 05/2028
+Score: 7.4 CPI
+
+Experience
+Amroha Police - Cybersecurity Intern
+Location: Amroha
+Period: June 2026
+- Gained practical exposure to malware analysis, penetration testing, digital forensics, cyber law, bug bounty methodologies, web security, and mobile application security.
+- Observed real-world cybersecurity investigations and ethical hacking demonstrations using forensic hardware and specialized security tools.
+- Studied cyber threats, vulnerability assessment, incident response workflows, and law enforcement investigation procedures.
+
+Cybersecurity Council - CyberSecurity Intern
+Location: Remote
+Period: 08/2025 - 10/2025
+- Researched and authored an analysis titled Password Security and Cracking Techniques: A Simulation Based Evaluation of Policy Effectiveness.
+- Participated in technical sessions and capability-building workshops led by 27 industry experts and security leaders.
+
+ShadowFox - CyberSecurity Intern
+Location: Remote
+Period: 07/2025
+- Executed a security assessment of a live web application and documented critical vulnerabilities.
+- Used Kali Linux tooling including Nmap, Gobuster, and Wireshark for network and application-layer security testing.
+- Recommended actionable security improvements including HTTPS implementation and firewall configuration.
+
+Projects
+RPDS - Real-Time Phishing & Web Threat Detection System
+Period: 02/2026 - Present
+Stack: FastAPI, Next.js, Character-level CNN, LightGBM, PhishTank, UCI datasets
+- Full-stack cyber threat detection platform for phishing and malicious URL analysis.
+- Integrated whitelist and blacklist filtering with ML-based model fusion.
+- Reached 99%+ accuracy with a false positive rate below 1%.
+- Designed circuit breakers, offline fallback behavior, comprehensive error handling, and zero-crash stability patterns.
+- Supported batch URL analysis and custom model training workflows.
+
+IronCrypt - Automated Reconnaissance & Enumeration Toolkit
+Period: 09/2025 - 10/2025
+Stack: Bash, Nmap, ffuf, DNS, TLS/SSL inspection, Git automation
+- Modular Bash toolkit for CTF and lab reconnaissance workflows.
+- Automated target reconnaissance, advanced TCP/UDP scanning, and web directory fuzzing.
+- Built menu-driven scripts for environment setup, permission management, and secure git-based auto-updates with version diffing.
+- Integrated ASN geolocation, DNS lookups, HTTP header analysis, and certificate inspection.
+
+Achievements
+- Prometeo - Capture The Flag, IIT Jodhpur: 15th Rank as Team IronCrypt
+- IntrusionX, GLA University: Hackathon Finalist
+
+Core Skills
+Penetration Testing, Digital Forensics, Malware Analysis, Reverse Engineering, Incident Response, Steganography, Threat Intelligence, OSINT, Vulnerability Assessment, Python, Java, Artificial Intelligence, Linux/Kali
+
+Certifications
+- Fundamentals of Dark Web - SOC Radar, August 2025
+- Threat Intelligence Fundamentals for SOC Analysts - SOC Radar, September 2025
+- Introduction to CIP - OPSWAT Academy, July 2025
+- Introduction to OSINT - Centri, July 2025
+- Introduction to Dark Web Operations - Centri, August 2025
+- Cisco Networking Basics - Cisco Networking Academy, November 2025
+- Cisco Network Essential - Cisco Networking Academy, September 2025
