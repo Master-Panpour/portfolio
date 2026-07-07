@@ -1,0 +1,138 @@
+export const DEFAULT_PROFILE = {
+  name: "Sanskar Jaiswal",
+  title: "B.Tech CSE (Cybersecurity & AI) | Purple Teamer & DFIR",
+  tagline: "Cybersecurity professional focused on penetration testing, malware analysis, digital forensics, and AI-driven threat detection.",
+  location: "Uttar Pradesh, India",
+  email: "sanskarjaiswal43@gmail.com",
+  phone: "+91-8467970305",
+  availability: "Open to cybersecurity internships, developer roles, CTF collaborations, and security research opportunities",
+  links: [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/sanskar-jaiswal-639369329/" },
+    { label: "GitHub", url: "https://github.com/Master-Panpour" },
+    { label: "TryHackMe", url: "https://tryhackme.com/p/MESSHIN" }
+  ],
+  metrics: [
+    { label: "RPDS Accuracy", value: "99%+" },
+    { label: "False Positive Rate", value: "<1%" },
+    { label: "CTF Rank", value: "15th" },
+    { label: "Expert Sessions", value: "27" }
+  ],
+  summary: [
+    "Dedicated cybersecurity professional and Purple Teamer specializing in penetration testing, malware analysis, and AI-driven security solutions.",
+    "Combines offensive security expertise with defensive digital forensics experience from law enforcement exposure, Cybersecurity Council work, and ShadowFox security assessment practice.",
+    "Builds resilient systems using tools and techniques such as Nmap, OWASP ZAP, Wireshark, Kali Linux, custom Python scripts, threat detection pipelines, and secure full-stack engineering."
+  ],
+  education: [
+    {
+      institution: "GLA University",
+      degree: "B.Tech in Computer Science Engineering",
+      specialization: "Cybersecurity and AI",
+      location: "Mathura",
+      period: "08/2024 - 05/2028",
+      score: "7.4 CPI"
+    }
+  ],
+  experience: [
+    {
+      organization: "Amroha Police",
+      role: "Cybersecurity Intern",
+      location: "Amroha",
+      period: "June 2026",
+      highlights: [
+        "Gained practical exposure to malware analysis, penetration testing, digital forensics, cyber law, bug bounty methodologies, web security, and mobile application security.",
+        "Observed real-world cybersecurity investigations and ethical hacking demonstrations using forensic hardware and specialized security tools.",
+        "Studied cyber threats, vulnerability assessment, incident response workflows, and law enforcement investigation procedures."
+      ]
+    },
+    {
+      organization: "Cybersecurity Council",
+      role: "CyberSecurity Intern",
+      location: "Remote",
+      period: "08/2025 - 10/2025",
+      highlights: [
+        "Researched and authored an analysis titled Password Security and Cracking Techniques: A Simulation Based Evaluation of Policy Effectiveness.",
+        "Participated in technical sessions and capability-building workshops led by 27 industry experts and security leaders."
+      ]
+    },
+    {
+      organization: "ShadowFox",
+      role: "CyberSecurity Intern",
+      location: "Remote",
+      period: "07/2025",
+      highlights: [
+        "Executed a security assessment of a live web application and documented critical vulnerabilities.",
+        "Used Kali Linux tooling including Nmap, Gobuster, and Wireshark for network and application-layer security testing.",
+        "Recommended actionable security improvements including HTTPS implementation and firewall configuration."
+      ]
+    }
+  ],
+  projects: [
+    {
+      name: "RPDS - Real-Time Phishing & Web Threat Detection System",
+      period: "02/2026 - Present",
+      description: "A full-stack cyber threat detection platform for phishing and malicious URL analysis.",
+      stack: ["FastAPI", "Next.js", "Character-level CNN", "LightGBM", "PhishTank", "UCI datasets"],
+      securityHighlights: [
+        "Integrated whitelist and blacklist filtering with ML-based model fusion.",
+        "Reached 99%+ accuracy with a false positive rate below 1%.",
+        "Designed circuit breakers, offline fallback behavior, comprehensive error handling, and zero-crash stability patterns.",
+        "Supported batch URL analysis and custom model training workflows."
+      ]
+    },
+    {
+      name: "IronCrypt - Automated Reconnaissance & Enumeration Toolkit",
+      period: "09/2025 - 10/2025",
+      description: "A modular Bash toolkit for CTF and lab reconnaissance workflows.",
+      stack: ["Bash", "Nmap", "ffuf", "DNS", "TLS/SSL inspection", "Git automation"],
+      securityHighlights: [
+        "Automated target reconnaissance, advanced TCP/UDP scanning, and web directory fuzzing.",
+        "Built menu-driven scripts for environment setup, permission management, and secure git-based auto-updates with version diffing.",
+        "Integrated ASN geolocation, DNS lookups, HTTP header analysis, and certificate inspection."
+      ]
+    }
+  ],
+  achievements: [
+    { name: "Prometeo - Capture The Flag", issuer: "IIT Jodhpur", detail: "15th Rank as Team IronCrypt" },
+    { name: "IntrusionX", issuer: "GLA University", detail: "Hackathon Finalist" }
+  ],
+  skills: [
+    { name: "Penetration Testing", level: "Intermediate" },
+    { name: "Digital Forensics", level: "Advanced" },
+    { name: "Malware Analysis", level: "Intermediate" },
+    { name: "Reverse Engineering", level: "Beginner" },
+    { name: "Incident Response", level: "Advanced" },
+    { name: "Steganography", level: "Professional" },
+    { name: "Threat Intelligence", level: "Advanced" },
+    { name: "OSINT", level: "Professional" },
+    { name: "Vulnerability Assessment", level: "Intermediate" },
+    { name: "Python", level: "Professional" },
+    { name: "Java", level: "Intermediate" },
+    { name: "Artificial Intelligence", level: "Intermediate" },
+    { name: "Linux/Kali", level: "Advanced" }
+  ],
+  certifications: [
+    { name: "Fundamentals of Dark Web", issuer: "SOC Radar", date: "August 2025" },
+    { name: "Threat Intelligence Fundamentals for SOC Analysts", issuer: "SOC Radar", date: "September 2025" },
+    { name: "Introduction to CIP", issuer: "OPSWAT Academy", date: "July 2025" },
+    { name: "Introduction to OSINT", issuer: "Centri", date: "July 2025" },
+    { name: "Introduction to Dark Web Operations", issuer: "Centri", date: "August 2025" },
+    { name: "Cisco Networking Basics", issuer: "Cisco Networking Academy", date: "November 2025" },
+    { name: "Cisco Network Essential", issuer: "Cisco Networking Academy", date: "September 2025" }
+  ],
+  focusAreas: [
+    { name: "Purple Team Operations", description: "Combining offensive testing with defensive detection, forensics, and incident response workflows." },
+    { name: "AI-Driven Security", description: "Using machine learning, URL intelligence, and adaptive model fusion for phishing and web threat detection." },
+    { name: "Reconnaissance Automation", description: "Building scripted workflows for enumeration, network analysis, web discovery, and CTF operations." }
+  ],
+  bulletin: {
+    headline: "Information Bulletin",
+    updated: "2026-07-03",
+    items: [
+      "B.Tech CSE student specializing in Cybersecurity and AI at GLA University.",
+      "Purple Team and DFIR profile with hands-on exposure to malware analysis, web security, forensics, incident response, and penetration testing.",
+      "Built RPDS, an AI-backed phishing and web threat detection system with 99%+ reported accuracy and less than 1% false positives.",
+      "Created IronCrypt, a Bash-based reconnaissance and enumeration toolkit using Nmap, ffuf, DNS, HTTP, TLS, and git automation workflows.",
+      "Ranked 15th in Prometeo CTF at IIT Jodhpur with Team IronCrypt and reached finalist status at IntrusionX, GLA University."
+    ]
+  }
+};

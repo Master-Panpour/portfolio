@@ -5,7 +5,7 @@ import "./nyxora.css";
 
 const NyxoraLogin = () => {
   const [token, setToken] = useState("");
-  const [status, setStatus] = useState("Enter the backend admin token to unlock Nyxora.");
+  const [status, setStatus] = useState("Enter the admin token to unlock Nyxora.");
   const [isBusy, setIsBusy] = useState(false);
 
   const submitLogin = async (event: FormEvent<HTMLFormElement>) => {

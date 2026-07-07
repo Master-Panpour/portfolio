@@ -2,9 +2,13 @@
 .env
 .env.*
 !.env.example
+.dev.vars
+.dev.vars.*
 frontend/.env
 frontend/.env.*
 !frontend/.env.example
+frontend/.dev.vars
+frontend/.dev.vars.*
 backend/.env
 backend/.env.*
 !backend/.env.example
