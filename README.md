@@ -194,4 +194,3 @@ Optional live feed environment variables:
 
 ## Source Notes
 
-I could not access private/previous ChatGPT conversations from this environment. LinkedIn also does not expose profile content reliably to this session. The bulletin therefore uses only provided and low-risk public details: your name, LinkedIn URL, and your stated developer + cybersecurity focus. Add GitHub repositories, verified roles, certifications, and project links directly in `data/profile.json`.
