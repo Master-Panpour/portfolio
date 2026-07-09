@@ -49,7 +49,7 @@ const NyxoraLogin = () => {
           <span>Nyxora</span>
         </div>
         <p className="nyxora-kicker">Admin gateway</p>
-        <h1 id="nyxora-login-title">Restricted Control Plane</h1>
+        <h1 id="nyxora-login-title">Nyxora Nexus</h1>
         <form className="nyxora-login-form" onSubmit={submitLogin}>
           <label htmlFor="nyxora-token">Admin Token</label>
           <div className="nyxora-token-field">
