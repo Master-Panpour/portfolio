@@ -161,7 +161,7 @@ const NyxoraAdmin = () => {
         <div className="nyxora-console-head">
           <div>
             <p className="nyxora-kicker">Authenticated admin portal</p>
-            <h1 id="nyxora-title">Neon Command Nexus</h1>
+            <h1 id="nyxora-title">Nyxora Nexus</h1>
           </div>
           <span>
             <ShieldCheck size={16} />
