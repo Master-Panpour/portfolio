@@ -21,7 +21,7 @@ const guardNyxoraPage = async (context) => {
   const url = new URL(context.request.url);
 
   if (ADMIN_PAGE_PATHS.has(url.pathname) && !(await isAuthorized(context.request, context.env))) {
-    return redirect(context.request, "/nyxora-login");
+    return redirect(context.request, "/not-allowed");
   }
 
   return null;

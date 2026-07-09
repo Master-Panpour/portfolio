@@ -72,7 +72,7 @@ Redeploy after adding the KV binding and secret. Functions receive bindings and 
 Nyxora endpoints on Cloudflare:
 
 ```text
-/nyxora-login
+/not-allowed
 /nyxora
 /api/admin/login
 /api/admin/profile
@@ -84,7 +84,7 @@ Nyxora endpoints on Cloudflare:
 Security behavior:
 
 - The admin token is stored only as a Cloudflare encrypted secret.
-- `/nyxora` and `/nyxora.html` redirect to `/nyxora-login` unless a valid session exists.
+- `/nyxora` and `/nyxora.html` redirect to `/not-allowed` unless a valid session exists.
 - Login creates a random `HttpOnly`, `Secure`, `SameSite=Strict` session cookie.
 - State-changing admin requests require the `X-CSRF-Token` header.
 - Failed token logins are rate-limited per source IP.

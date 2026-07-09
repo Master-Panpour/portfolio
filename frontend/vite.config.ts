@@ -23,7 +23,7 @@ export default defineConfig({
       input: {
         main: inputPath("./index.html"),
         nyxora: inputPath("./nyxora.html"),
-        nyxoraLogin: inputPath("./nyxora-login.html")
+        notAllowed: inputPath("./not-allowed.html")
       }
     }
   }

@@ -61,7 +61,7 @@ public final class StaticFileHandler implements HttpHandler {
         }
 
         String requestedFile = requested.getFileName() == null ? "" : requested.getFileName().toString();
-        if ("nyxora.html".equalsIgnoreCase(requestedFile) || "nyxora-login.html".equalsIgnoreCase(requestedFile)) {
+        if ("nyxora.html".equalsIgnoreCase(requestedFile) || "not-allowed.html".equalsIgnoreCase(requestedFile)) {
             ProfileApiHandler.sendJson(exchange, 404, "{\"error\":\"not_found\"}");
             return;
         }

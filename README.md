@@ -83,7 +83,7 @@ Nyxora is not rendered inside the public portfolio page. It is served as a separ
 Start at the token gateway:
 
 ```text
-http://localhost:8080/nyxora-login
+http://localhost:8080/not-allowed
 ```
 
 Enable it by creating a private `.env` file from `.env.example`, then setting `PORTFOLIO_ADMIN_TOKEN` to a long random value in that local file. Start the backend normally:
@@ -104,7 +104,7 @@ Nyxora can:
 Security notes:
 
 - The public portfolio bundle does not render or link the admin portal.
-- `/nyxora` redirects to `/nyxora-login` unless the Java backend has issued a valid admin session.
+- `/nyxora` redirects to the token gateway unless the Java backend has issued a valid admin session.
 - The admin token is never bundled into frontend code and is never sent in a URL.
 - The real admin token belongs in `.env`, an OS environment variable, or a production secret store.
 - After successful login, the backend creates a 30-minute `HttpOnly`, `SameSite=Strict` session cookie.

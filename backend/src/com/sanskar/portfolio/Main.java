@@ -38,8 +38,8 @@ public final class Main {
         server.createContext("/api/csp-report", new LoggedHandler(new CspReportHandler(allowedOrigins), accessLogger));
         server.createContext("/nyxora", new LoggedHandler(new NyxoraPageHandler(staticRoot, "nyxora.html", true, adminSessionStore, allowedOrigins), accessLogger));
         server.createContext("/nyxora.html", new LoggedHandler(new NyxoraPageHandler(staticRoot, "nyxora.html", true, adminSessionStore, allowedOrigins), accessLogger));
-        server.createContext("/nyxora-login", new LoggedHandler(new NyxoraPageHandler(staticRoot, "nyxora-login.html", false, adminSessionStore, allowedOrigins), accessLogger));
-        server.createContext("/nyxora-login.html", new LoggedHandler(new NyxoraPageHandler(staticRoot, "nyxora-login.html", false, adminSessionStore, allowedOrigins), accessLogger));
+        server.createContext("/not-allowed", new LoggedHandler(new NyxoraPageHandler(staticRoot, "not-allowed.html", false, adminSessionStore, allowedOrigins), accessLogger));
+        server.createContext("/not-allowed.html", new LoggedHandler(new NyxoraPageHandler(staticRoot, "not-allowed.html", false, adminSessionStore, allowedOrigins), accessLogger));
         server.createContext("/api/health", new LoggedHandler(exchange -> {
             SecurityHeaders.apply(exchange, allowedOrigins);
             byte[] body = "{\"status\":\"ok\"}".getBytes(ProfileApiHandler.UTF_8);
@@ -57,7 +57,7 @@ public final class Main {
         System.out.println("Serving TryHackMe tracker cache from " + thmTrackerPath);
         System.out.println("Writing access logs to " + accessLogPath);
         System.out.println(adminSessionStore.isConfigured()
-                ? "Nyxora admin portal enabled at /nyxora-login."
+                ? "Nyxora admin portal enabled at /not-allowed."
                 : "Nyxora disabled until PORTFOLIO_ADMIN_TOKEN is set to 24+ characters.");
         SHUTDOWN_LATCH.await();
     }

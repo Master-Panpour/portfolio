@@ -39,12 +39,7 @@ public final class NyxoraPageHandler implements HttpHandler {
         }
 
         if (requireSession && !sessionStore.isSessionAuthorized(exchange) && !sessionStore.isBearerAuthorized(exchange)) {
-            redirect(exchange, "/nyxora-login");
-            return;
-        }
-
-        if (!requireSession && sessionStore.isSessionAuthorized(exchange)) {
-            redirect(exchange, "/nyxora");
+            redirect(exchange, "/not-allowed");
             return;
         }
 

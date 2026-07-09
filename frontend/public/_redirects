@@ -1,5 +1,5 @@
 # Cloudflare Pages rewrites for the portfolio multi-page build.
 /nyxora /nyxora.html 200
 /nyxora/ /nyxora.html 200
-/nyxora-login /nyxora-login.html 200
-/nyxora-login/ /nyxora-login.html 200
+/not-allowed /not-allowed.html 200
+/not-allowed/ /not-allowed.html 200

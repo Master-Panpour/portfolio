@@ -13,7 +13,7 @@ type AdminLogEntry = {
 };
 
 const redirectToLogin = () => {
-  window.location.replace("/nyxora-login");
+  window.location.replace("/not-allowed");
 };
 
 const readCookie = (name: string) => {
