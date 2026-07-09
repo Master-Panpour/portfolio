@@ -32,7 +32,6 @@ Cloudflare's current React/Vite Pages preset uses `npm run build` and `dist`.
 - Static TryHackMe cache from `frontend/public/thm-rooms.json`
 - Resume, images, music synth, and contact mail draft
 - Secure headers from `frontend/public/_headers`
-- Clean rewrites from `frontend/public/_redirects`
 - Nyxora admin APIs through Cloudflare Pages Functions
 - Editable profile data stored in Cloudflare KV
 - Access-log metadata stored in Cloudflare KV
@@ -68,6 +67,8 @@ PORTFOLIO_ADMIN_TOKEN
 5. Select `Encrypt` / secret mode before saving.
 
 Redeploy after adding the KV binding and secret. Functions receive bindings and secrets on `context.env`, and Cloudflare requires a redeploy before new bindings are active.
+
+The project does not define a `_redirects` file for Nyxora. Cloudflare Pages already serves HTML files at extensionless routes, so `not-allowed.html` is available at `/not-allowed` and `nyxora.html` is available at `/nyxora`. Keeping manual `.html` rewrites can cause redirect loops with Pages' default route matching.
 
 Nyxora endpoints on Cloudflare:
 

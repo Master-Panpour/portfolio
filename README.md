@@ -33,7 +33,6 @@ frontend/
   vite.config.ts
   public/
     _headers
-    _redirects
 data/
   profile.json
 .env.example
