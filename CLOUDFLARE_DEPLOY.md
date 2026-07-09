@@ -84,6 +84,7 @@ Nyxora endpoints on Cloudflare:
 Security behavior:
 
 - The admin token is stored only as a Cloudflare encrypted secret.
+- `/nyxora` and `/nyxora.html` redirect to `/nyxora-login` unless a valid session exists.
 - Login creates a random `HttpOnly`, `Secure`, `SameSite=Strict` session cookie.
 - State-changing admin requests require the `X-CSRF-Token` header.
 - Failed token logins are rate-limited per source IP.
