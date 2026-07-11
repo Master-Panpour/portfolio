@@ -7,6 +7,7 @@ const MAX_TOKEN_BYTES = 512;
 const MAX_LOG_LINES = 200;
 const LOGIN_WINDOW_SECONDS = 10 * 60;
 const LOGIN_MAX_FAILURES = 5;
+const ALERT_COOLDOWN_SECONDS = 15 * 60;
 
 export const keys = {
   profile: "profile",
@@ -205,7 +206,9 @@ export const clientIp = (request) =>
 export const recordLoginFailure = async (request, env) => {
   const key = `login_fail:${clientIp(request)}`;
   const current = Number.parseInt((await env.PORTFOLIO_KV.get(key)) ?? "0", 10);
-  await env.PORTFOLIO_KV.put(key, String(current + 1), { expirationTtl: LOGIN_WINDOW_SECONDS });
+  const next = current + 1;
+  await env.PORTFOLIO_KV.put(key, String(next), { expirationTtl: LOGIN_WINDOW_SECONDS });
+  return next;
 };
 
 export const isLoginLimited = async (request, env) => {
@@ -226,6 +229,109 @@ export const validateLoginBody = async (request) => {
 const safeField = (value, maxLength = 240) => {
   const text = typeof value === "string" ? value : "";
   return text.replace(/[\r\n]/g, " ").slice(0, maxLength);
+};
+
+const escapeHtml = (value) =>
+  safeField(value, 800)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const alertConfig = (env) => {
+  const apiKey = typeof env.NYXORA_ALERT_RESEND_API_KEY === "string" ? env.NYXORA_ALERT_RESEND_API_KEY.trim() : "";
+  const to = typeof env.NYXORA_ALERT_TO === "string"
+    ? env.NYXORA_ALERT_TO.split(",").map((value) => value.trim()).filter(Boolean)
+    : [];
+  const from = typeof env.NYXORA_ALERT_FROM === "string" ? env.NYXORA_ALERT_FROM.trim() : "";
+  return apiKey && to.length > 0 && from ? { apiKey, to, from } : null;
+};
+
+const alertCooldownSeconds = (env) => {
+  const raw = Number.parseInt(env.NYXORA_ALERT_COOLDOWN_SECONDS ?? "", 10);
+  return Number.isFinite(raw) && raw >= 60 && raw <= 86400 ? raw : ALERT_COOLDOWN_SECONDS;
+};
+
+const alertTitle = (type) => {
+  if (type === "admin-login-success") {
+    return "Successful admin login";
+  }
+  if (type === "admin-login-failure-threshold") {
+    return "Failed login threshold reached";
+  }
+  return "Admin security event";
+};
+
+const alertCooldownKey = (type, request) => `alert:${type}:${clientIp(request)}`;
+
+export const sendSecurityAlert = async (context, type, details = {}) => {
+  const config = alertConfig(context.env);
+  if (!config || !context.env.PORTFOLIO_KV) {
+    return;
+  }
+
+  const cooldownKey = alertCooldownKey(type, context.request);
+  if (await context.env.PORTFOLIO_KV.get(cooldownKey)) {
+    return;
+  }
+
+  await context.env.PORTFOLIO_KV.put(cooldownKey, new Date().toISOString(), {
+    expirationTtl: alertCooldownSeconds(context.env)
+  });
+
+  const url = new URL(context.request.url);
+  const timestamp = new Date().toISOString();
+  const fields = {
+    event: alertTitle(type),
+    timestamp,
+    ip: clientIp(context.request),
+    path: url.pathname,
+    method: context.request.method,
+    userAgent: context.request.headers.get("User-Agent") ?? "unknown",
+    referer: context.request.headers.get("Referer") ?? "none",
+    ...details
+  };
+
+  const text = [
+    "Nyxora admin security alert",
+    "",
+    `Event: ${fields.event}`,
+    `Time: ${fields.timestamp}`,
+    `IP: ${fields.ip}`,
+    `Method: ${fields.method}`,
+    `Path: ${fields.path}`,
+    `User-Agent: ${fields.userAgent}`,
+    `Referer: ${fields.referer}`,
+    details.failures ? `Failures in window: ${details.failures}` : ""
+  ].filter(Boolean).join("\n");
+
+  const htmlRows = Object.entries(fields)
+    .map(([key, value]) => `<tr><th align="left">${escapeHtml(key)}</th><td>${escapeHtml(String(value))}</td></tr>`)
+    .join("");
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${config.apiKey}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from: config.from,
+      to: config.to,
+      subject: `[Nyxora] ${alertTitle(type)}`,
+      text,
+      html: `<h2>Nyxora admin security alert</h2><table>${htmlRows}</table>`
+    })
+  });
+
+  if (!response.ok) {
+    await context.env.PORTFOLIO_KV.put(
+      "alert:last_error",
+      JSON.stringify({ ts: timestamp, status: response.status, event: type }),
+      { expirationTtl: 24 * 60 * 60 }
+    );
+  }
 };
 
 export const logAccess = async (context) => {

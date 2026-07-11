@@ -66,6 +66,28 @@ PORTFOLIO_ADMIN_TOKEN
 4. Set the value to a long random token with at least 24 characters.
 5. Select `Encrypt` / secret mode before saving.
 
+Optional Nyxora email alerts:
+
+Nyxora can send security alerts for successful admin logins and failed-login thresholds. This uses the Resend Email API from Cloudflare Pages Functions.
+
+Add these Cloudflare variables/secrets:
+
+```text
+NYXORA_ALERT_RESEND_API_KEY
+NYXORA_ALERT_TO
+NYXORA_ALERT_FROM
+NYXORA_ALERT_COOLDOWN_SECONDS
+```
+
+Recommended setup:
+
+- `NYXORA_ALERT_RESEND_API_KEY`: encrypted secret. Resend API key.
+- `NYXORA_ALERT_TO`: encrypted secret or variable. One destination email address, or comma-separated addresses.
+- `NYXORA_ALERT_FROM`: variable. Verified sender, for example `Nyxora <alerts@your-domain.com>`.
+- `NYXORA_ALERT_COOLDOWN_SECONDS`: optional variable, default `900`.
+
+Alerts do not include tokens, cookies, request bodies, or profile JSON. They include only event type, timestamp, source IP, method, path, user agent, referer, and failed-attempt count when relevant.
+
 Redeploy after adding the KV binding and secret. Functions receive bindings and secrets on `context.env`, and Cloudflare requires a redeploy before new bindings are active.
 
 The project does not define a `_redirects` file for Nyxora. Cloudflare Pages already serves HTML files at extensionless routes, so `not-allowed.html` is available at `/not-allowed` and `nyxora.html` is available at `/nyxora`. Keeping manual `.html` rewrites can cause redirect loops with Pages' default route matching.
@@ -89,6 +111,7 @@ Security behavior:
 - Login creates a random `HttpOnly`, `Secure`, `SameSite=Strict` session cookie.
 - State-changing admin requests require the `X-CSRF-Token` header.
 - Failed token logins are rate-limited per source IP.
+- Email alerts are sent on successful admin login and failed-login threshold when alert variables are configured.
 - Profile edits are size-limited, JSON-object validated, and backed up in KV for 30 days.
 - Access logs store metadata only: timestamp, method, path, remote IP, user agent, and referer. Query strings, request bodies, and tokens are not logged.
 

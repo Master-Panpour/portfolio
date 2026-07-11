@@ -15,6 +15,7 @@ import {
   requireAuthorized,
   requireCsrf,
   saveProfile,
+  sendSecurityAlert,
   timingSafeEqual,
   validateLoginBody
 } from "../../_shared/admin.js";
@@ -33,6 +34,15 @@ const routePath = (context) => {
   return Array.isArray(path) ? path.join("/") : path || "";
 };
 
+const queueSecurityAlert = (context, type, details = {}) => {
+  const task = sendSecurityAlert(context, type, details).catch(() => undefined);
+  if (typeof context.waitUntil === "function") {
+    context.waitUntil(task);
+    return;
+  }
+  return task;
+};
+
 const login = async (context) => {
   const kvError = assertKv(context.env);
   if (kvError) {
@@ -48,13 +58,17 @@ const login = async (context) => {
   const candidate = await validateLoginBody(context.request);
   const expected = getConfiguredToken(context.env);
   if (!candidate || !timingSafeEqual(expected, candidate)) {
-    await recordLoginFailure(context.request, context.env);
+    const failures = await recordLoginFailure(context.request, context.env);
+    if (failures >= 5) {
+      queueSecurityAlert(context, "admin-login-failure-threshold", { failures });
+    }
     return json({ error: "unauthorized" }, { status: 401 });
   }
 
   await clearLoginFailures(context.request, context.env);
   const session = await getSession(context.request, context.env);
   const nextSession = session ?? (await createSession(context.env));
+  queueSecurityAlert(context, "admin-login-success");
   return responseWithCookies({ status: "authenticated" }, loginCookies(nextSession));
 };
 
